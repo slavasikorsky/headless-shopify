@@ -71,6 +71,9 @@ export type ShopifyProduct = {
     maxVariantPrice: Money;
     minVariantPrice: Money;
   };
+  background_color: {
+    value: string;
+  } | null;
   variants: Connection<ProductVariant>;
   featuredImage: Image;
   images: Connection<Image>;

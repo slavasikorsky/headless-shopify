@@ -24,6 +24,9 @@ export const productFragment = /* GraphQL */ `
         currencyCode
       }
     }
+    background_color: metafield(namespace: "custom", key: "background_color") {
+      value
+    }
     variants(first: 100) {
       edges {
         node {

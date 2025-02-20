@@ -1,4 +1,9 @@
+import CollectionSlider from "@/components/collection-slider";
+import Grid from "@/components/grid";
+import ProductGridItems from "@/components/layout/product-grid-items";
+import { getCollectionProducts } from "@/lib/shopify";
 import Link from "next/link";
+import { Suspense } from "react";
 
 export const metadata = {
   description:
@@ -8,12 +13,18 @@ export const metadata = {
   },
 };
 
-export default function Home() {
+export default async function Home() {
+  const products = await getCollectionProducts({
+    collection: "new-collection",
+    sortKey: "CREATED_AT",
+    reverse: false,
+  });
+
   return (
     <main className="flex-1">
-      <section className="w-full pt-12 md:pt-24 lg:pt-32 border-bottom-b">
+      <section className="container m-auto w-full pt-12 md:pt-24 lg:pt-32 border-bottom-b">
         <div className="px-4 md:px-6 space-y-10 xl:space-y-16">
-          <div className="grid max-w-[1300px] mx-auto gap-4 px-4 sm:px-6 md:px-10 md:grid-cols-2 md:gap-16">
+          <div className="grid mx-auto gap-4 md:grid-cols-2 md:gap-16">
             <div>
               <h1 className="lg:leading-tighter text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[3.75rem]">
                 Discover the Latest Fashion Trends
@@ -51,11 +62,20 @@ export default function Home() {
           </div>
           <img
             src="/banner.png"
-            width="1270"
+            width="100%"
             height="300"
             alt="Hero"
             className="mx-auto rounded-xl object-cover max-h-[400px]"
           />
+        </div>
+      </section>
+      <section className="w-full py-12 md:py-24 lg:py-20 flex place-content-center">
+        <div className="container space-y-12 px-4 md:px-6">
+          {products.length === 0 ? (
+            <p className="py-3 text-lg">{`No products found in this collection`}</p>
+          ) : (
+            <CollectionSlider products={products} />
+          )}
         </div>
       </section>
       <section className="w-full py-12 md:py-24 lg:py-32 grid place-content-center">
