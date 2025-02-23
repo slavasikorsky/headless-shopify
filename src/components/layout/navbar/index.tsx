@@ -21,11 +21,6 @@ export async function Navbar() {
             className="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
           >
             <LogoSquare />
-            {/* 
-                <div className="ml-2 flex-none text-small font-medium hidden xl:block uppercase">
-                {process.env.SITE_NAME}
-                </div>
-            */}
           </Link>
           {menu.length > 0 && (
             <ul className="hidden gap-6 text-sm md:flex md:iteks-center">

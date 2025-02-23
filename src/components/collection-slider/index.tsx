@@ -12,6 +12,7 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import Loader from "../layout/loader";
 
 export default function CollectionSlider({
   products,
@@ -24,9 +25,7 @@ export default function CollectionSlider({
   }, []);
 
   return !isLoaded ? (
-    <div className="flex items-center justify-center h-96">
-      <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-primary"></div>
-    </div>
+    <Loader />
   ) : (
     <Swiper
       modules={[Navigation, Pagination]}
@@ -50,7 +49,7 @@ export default function CollectionSlider({
         <SwiperSlide>
           <Grid.Item key={product.handle} className={"animate-fadeIn"}>
             <Link
-              href={`/products/${product.handle}`}
+              href={`/product/${product.handle}`}
               className="relative inline-block h-full w-full"
               prefetch={true}
             >
