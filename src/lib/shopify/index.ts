@@ -11,6 +11,7 @@ import {
   ShopifyCollectionsOperation,
   ShopifyMenuOperation,
   ShopifyProduct,
+  ShopifyProductOperation,
   ShopifyProudctOperation,
 } from "./types";
 import { isShopifyError } from "./../type-guards";
@@ -183,6 +184,17 @@ function reshapeCollections(collections: ShopifyCollection[]) {
   return reshapedCollections;
 }
 
+export async function getProduct(handle: string): Promise<Product | undefined> {
+  const res = await shopifyFetch<ShopifyProductOperation>({
+    query: getProductQuery,
+    tags: [TAGS.products],
+    variables: {
+      handle,
+    },
+  });
+  return reshapeProduct(res.body.data.product, false);
+}
+
 export async function getProducts({
   sortKey,
   reverse,
@@ -209,17 +221,6 @@ export async function getCollections(): Promise<Collection[]> {
 
   const shopifyCollections = removeEdgesAndNodes(res?.body?.data?.collections);
   const collections = [
-    {
-      handle: "",
-      title: "All",
-      description: "All products",
-      seo: {
-        title: "All",
-        description: "All products",
-      },
-      path: "/search",
-      updatedAt: new Date().toISOString(),
-    },
     // Filter out the hidden products
     ...reshapeCollections(shopifyCollections).filter(
       (collection) => !collection.handle.startsWith("hidden")
