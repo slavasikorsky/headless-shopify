@@ -1,17 +1,17 @@
 import { ReadonlyURLSearchParams } from "next/navigation";
 
-export function ensureStartWidth(stringToCheck: string, startWidth: string) {
-  return stringToCheck.startsWith(startWidth)
+export function ensureStartWith(stringToCheck: string, startsWith: string) {
+  return stringToCheck.startsWith(startsWith)
     ? stringToCheck
-    : `${startWidth}${stringToCheck}`;
+    : `${startsWith}${stringToCheck}`;
 }
 
 export function createUrl(
-  path: string,
+  pathname: string,
   params: URLSearchParams | ReadonlyURLSearchParams
 ) {
   const paramsString = params.toString();
   const queryString = `${paramsString.length ? "?" : ""}${paramsString}`;
 
-  return `${path}${queryString}`;
+  return `${pathname}${queryString}`;
 }

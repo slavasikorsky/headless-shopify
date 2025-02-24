@@ -1,4 +1,4 @@
-import { ensureStartWidth } from "../utils";
+import { ensureStartWith } from "../utils";
 import { getMenuQuery } from "./queries/menu";
 import {
   Collection,
@@ -27,7 +27,7 @@ import {
 } from "./queries/collection";
 
 const domain = process.env.SHOPIFY_STORE_DOMAIN
-  ? ensureStartWidth(process.env.SHOPIFY_STORE_DOMAIN, "https://")
+  ? ensureStartWith(process.env.SHOPIFY_STORE_DOMAIN, "https://")
   : "";
 
 const key = process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN;
@@ -221,6 +221,17 @@ export async function getCollections(): Promise<Collection[]> {
 
   const shopifyCollections = removeEdgesAndNodes(res?.body?.data?.collections);
   const collections = [
+    {
+      handle: "",
+      title: "All",
+      description: "All products",
+      seo: {
+        title: "All",
+        description: "All products",
+      },
+      path: "/search",
+      updatedAt: new Date().toISOString(),
+    },
     // Filter out the hidden products
     ...reshapeCollections(shopifyCollections).filter(
       (collection) => !collection.handle.startsWith("hidden")
