@@ -1,11 +1,10 @@
 import Gallery from "@/components/product/gallery";
 import { getProduct } from "@/lib/shopify";
 
-export default async function ProductPage({
-  params,
-}: {
-  params: { handle: string };
+export default async function ProductPage(props: {
+  params: Promise<{ handle: string }>;
 }) {
+  const params = await props.params;
   const { handle } = params;
   const product = await getProduct(handle);
   return (

@@ -87,7 +87,7 @@ export type Product = Omit<ShopifyProduct, "variants" | "images"> & {
   images: Image[];
 };
 
-export type ShopifyProudctOperation = {
+export type ShopifyProudctsOperation = {
   data: {
     products: Connection<ShopifyProduct>;
   };
