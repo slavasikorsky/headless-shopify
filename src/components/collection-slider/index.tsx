@@ -28,6 +28,7 @@ export default function CollectionSlider({
     <Loader />
   ) : (
     <Swiper
+      loop={true}
       modules={[Navigation, Pagination]}
       spaceBetween={50}
       slidesPerView={3}
@@ -37,13 +38,14 @@ export default function CollectionSlider({
         320: {
           slidesPerView: 1,
         },
-        640: {
+        760: {
           slidesPerView: 2,
         },
         1024: {
           slidesPerView: 3,
         },
       }}
+      className="!pb-10"
     >
       {products.map((product) => (
         <SwiperSlide>
@@ -53,7 +55,6 @@ export default function CollectionSlider({
               className="relative inline-block h-full w-full"
               prefetch={true}
             >
-              {product.background_color?.value}
               <GridTileImage
                 alt={product.title}
                 label={{

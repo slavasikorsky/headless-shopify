@@ -19,3 +19,17 @@ input,
 button {
   @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-50 dark:focus-visible:ring-neutral-600 dark:focus-visible:ring-offset-neutral-900;
 }
+
+:root {
+  --color-active: rgb(20, 251, 255);
+  --swiper-pagination-bullet-size: 12px;
+  --swiper-pagination-bullet-width: 12px;
+  --swiper-pagination-bullet-height: 12px;
+  --swiper-pagination-bullet-inactive-color: #b8b8b8;
+  --swiper-pagination-color: var(--color-active);
+  --swiper-pagination-bullet-inactive-opacity: 0.5;
+  --swiper-pagination-bullet-opacity: 1;
+  --swiper-pagination-bullet-horizontal-gap: 6px;
+  --swiper-pagination-bullet-vertical-gap: 6px;
+  --swiper-navigation-color: var(--color-active);
+}
