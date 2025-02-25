@@ -66,7 +66,7 @@ export default async function Home() {
           />
         </div>
       </section>
-      <section className="w-full py-12 md:py-24 lg:py-20 flex place-content-center">
+      <section className="w-full py-8 md:py-12 lg:py-10 flex place-content-center">
         <div className="container space-y-12 px-4 md:px-6">
           {products.length === 0 ? (
             <p className="py-3 text-lg">{`No products found in this collection`}</p>
@@ -75,7 +75,7 @@ export default async function Home() {
           )}
         </div>
       </section>
-      <section className="w-full py-12 md:py-24 lg:py-32 grid place-content-center">
+      <section className="w-full py-6 md:py-4 lg:py-12 grid place-content-center">
         <div className="container space-y-12 px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
