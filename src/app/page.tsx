@@ -1,9 +1,6 @@
 import CollectionSlider from "@/components/collection-slider";
-import Grid from "@/components/grid";
-import ProductGridItems from "@/components/layout/product-grid-items";
 import { getCollectionProducts } from "@/lib/shopify";
 import Link from "next/link";
-import { Suspense } from "react";
 
 export const metadata = {
   description:
