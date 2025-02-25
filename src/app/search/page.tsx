@@ -17,6 +17,7 @@ export default async function SearchPage(props: {
     sorting.find((item) => item.slug === sort) || defaultSort;
   const products = await getProducts({ sortKey, reverse, query: searchValue });
   const resultsText = products.length > 1 ? "results" : "result";
+  console.log(searchValue);
   return (
     <>
       {searchValue ? (
@@ -27,11 +28,17 @@ export default async function SearchPage(props: {
           <span>&quot;{searchValue}&quot;</span>
         </p>
       ) : null}
-      {products.length > 0 ? (
+      {searchValue && products.length > 0 ? (
         <Grid className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           <ProductGridItems products={products} />
         </Grid>
-      ) : null}
+      ) : (
+        <div>
+          <p className="py-3 text-lg text-center">
+            Search for products by typing in the search bar above.
+          </p>
+        </div>
+      )}
     </>
   );
 }
