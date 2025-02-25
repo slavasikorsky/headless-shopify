@@ -39,7 +39,7 @@ export default async function CategoryPage(props: {
               alt={image.altText || `${collection?.title} image`}
               width={image.width}
               height={image.height}
-              className="mb-6"
+              className="mb-6 h-[200px] object-cover rounded-lg"
             />
           )}
           <Grid className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
